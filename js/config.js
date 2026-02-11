@@ -10,7 +10,7 @@
    - Complete verification (takes 1-2 days)
    - Go to Developers > API Keys
    - Copy your Publishable Key (starts with pk_live_ or pk_test_)
-   
+   pk_live_51SzRcFK5aPdD8C0BV2UlnuWtkByGq9DDEhtx9wiwvYJB1qvzwVHnHyktjlpokgavdUsS8UglGyVtV9pz0ywAF4vL00u5ri7swK
    Step 2: Create a Stripe Checkout Session
    - Go to Developers > Checkout
    - Or use Stripe Dashboard to create a payment link
@@ -31,8 +31,8 @@ const CONFIG = {
         // Get it from: https://dashboard.stripe.com/apikeys
         // Example: 'pk_live_51ABC123...' for live payments
         // Example: 'pk_test_51ABC123...' for testing
-        publishableKey: 'pk_test_REPLACE_WITH_YOUR_KEY',
-        
+        publishableKey: 'pk_live_51SzRcFK5aPdD8C0BV2UlnuWtkByGq9DDEhtx9wiwvYJB1qvzwVHnHyktjlpokgavdUsS8UglGyVtV9pz0ywAF4vL00u5ri7swK',
+        // publishableKey: 'pk_test_51SzRcFK5aPdD8C0BeVMynSMhVDv78ei4ajoJ5MMBtfnVrzgsejcl112ZYkemxitonPpY9lndtNsthLe9oYyAQT4f00O0nMukkC',
         // Payment amount in cents (1000 = $10.00 CAD)
         amount: 1000,
         currency: 'cad',

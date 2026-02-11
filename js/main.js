@@ -59,7 +59,9 @@ function initiateCheckout() {
     
     // OPTION 1: Using Stripe Payment Link (EASIEST - No server needed!)
     // Create a payment link in your Stripe Dashboard and paste it here:
-    const stripePaymentLink = 'https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK';
+    const stripePaymentLink =  'https://buy.stripe.com/8x2cN6aYN72o1920DO0RG00';
+    // 'https://buy.stripe.com/test_8x2cN6aYN72o1920DO0RG00';
+
     
     if (!stripePaymentLink.includes('REPLACE_WITH_YOUR_PAYMENT_LINK')) {
         // Add success parameter to redirect back
