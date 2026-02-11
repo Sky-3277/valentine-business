@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Create Your Valentine Link</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .success-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 1s ease infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .success-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            color: var(--deep-pink);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .success-message {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .customize-form {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--deep-pink);
+        }
+        
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--light-pink);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input[type="text"]:focus {
+            outline: none;
+            border-color: var(--deep-pink);
+        }
+        
+        .form-group input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 2px dashed var(--light-pink);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .file-upload-label:hover {
+            border-color: var(--deep-pink);
+            background: rgba(255, 192, 203, 0.1);
+        }
+        
+        .file-upload-label .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .file-preview {
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .file-preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .optional-tag {
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: normal;
+            margin-left: 5px;
+        }
+        
+        .generate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-hover) 100%);
+            color: white;
+            padding: 18px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            transition: all 0.3s;
+        }
+        
+        .generate-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.5);
+        }
+        
+        .generate-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Result Section */
+        .result-section {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .result-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .link-box {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            word-break: break-all;
+        }
+        
+        .link-box a {
+            color: var(--deep-pink);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        
+        .copy-btn {
+            background: var(--deep-pink);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .share-options {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .share-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        
+        .share-sms {
+            background: #34B7F1;
+            color: white;
+        }
+        
+        .share-email {
+            background: #EA4335;
+            color: white;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .preview-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 192, 203, 0.2);
+            border-radius: 15px;
+        }
+        
+        .preview-section h3 {
+            color: var(--deep-pink);
+            margin-bottom: 15px;
+        }
+        
+        .preview-iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 600px) {
+            .success-title {
+                font-size: 1.8rem;
+            }
+            
+            .customize-form,
+            .result-section {
+                padding: 25px;
+            }
+        }
+    </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="hearts-background" id="heartsBackground"></div>
+
+    <div class="success-container">
+        <div class="success-icon">🎉</div>
+        <h1 class="success-title">Payment Successful!</h1>
+        <p class="success-message">Thank you! Now let's create your magical Valentine link.</p>
+        
+        <!-- Customization Form -->
+        <form class="customize-form" id="customizeForm">
+            <div class="form-group">
+                <label for="recipientName">Their Name *</label>
+                <input 
+                    type="text" 
+                    id="recipientName" 
+                    placeholder="e.g., Sarah, My Love, Baby"
+                    required
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="senderName">Your Name <span class="optional-tag">(optional)</span></label>
+                <input 
+                    type="text" 
+                    id="senderName" 
+                    placeholder="e.g., Mike, Your Secret Admirer"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label>Upload a Photo <span class="optional-tag">(optional)</span></label>
+                <label for="photoUpload" class="file-upload-label">
+                    <span class="upload-icon">📸</span>
+                    <span>Click to upload a photo</span>
+                    <small>This will appear when they click "Yes"</small>
+                </label>
+                <input type="file" id="photoUpload" accept="image/*">
+                <div class="file-preview" id="filePreview"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="customMessage">Custom Message <span class="optional-tag">(optional)</span></label>
+                <input 
+                    type="text" 
+                    id="customMessage" 
+                    placeholder="e.g., You make my heart skip a beat!"
+                    maxlength="100"
+                >
+            </div>
+            
+            <button type="submit" class="generate-btn" id="generateBtn">
+                ✨ Generate My Valentine Link
+            </button>
+        </form>
+        
+        <!-- Result Section -->
+        <div class="result-section" id="resultSection">
+            <h2>Your Valentine Link is Ready! 💕</h2>
+            <p>Copy and share this link with your special someone:</p>
+            
+            <div class="link-box">
+                <a href="#" id="generatedLink" target="_blank"></a>
+            </div>
+            
+            <button class="copy-btn" id="copyBtn" onclick="copyLink()">
+                📋 Copy Link
+            </button>
+            
+            <div class="share-options">
+                <a href="#" class="share-btn share-whatsapp" id="whatsappShare" target="_blank">
+                    💬 WhatsApp
+                </a>
+                <a href="#" class="share-btn share-sms" id="smsShare">
+                    💬 Text Message
+                </a>
+                <a href="#" class="share-btn share-email" id="emailShare" target="_blank">
+                    ✉️ Email
+                </a>
+            </div>
+            
+            <div class="preview-section">
+                <h3>Preview Your Valentine Page:</h3>
+                <iframe id="previewFrame" class="preview-iframe"></iframe>
+            </div>
+            
+            <p style="margin-top: 30px; color: #666;">
+                💡 <strong>Tip:</strong> Send the link via text for the best surprise!
+            </p>
+        </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/analytics.js"></script>
+    <script>
+        // Initialize floating hearts
+        function initHearts() {
+            const container = document.getElementById('heartsBackground');
+            const hearts = ['💕', '💖', '💗', '💓', '💝', '❤️'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Track payment success
+        if (typeof Analytics !== 'undefined') {
+            Analytics.FunnelTracker.paymentSuccess();
+        }
+        
+        // File upload preview
+        const photoUpload = document.getElementById('photoUpload');
+        const filePreview = document.getElementById('filePreview');
+        let uploadedImageData = null;
+        
+        photoUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Image too large! Maximum size is 5MB.');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImageData = e.target.result;
+                    filePreview.innerHTML = `<img src="${uploadedImageData}" alt="Preview">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Form submission
+        const form = document.getElementById('customizeForm');
+        const resultSection = document.getElementById('resultSection');
+        const generateBtn = document.getElementById('generateBtn');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const recipientName = document.getElementById('recipientName').value.trim();
+            const senderName = document.getElementById('senderName').value.trim();
+            const customMessage = document.getElementById('customMessage').value.trim();
+            
+            if (!recipientName) {
+                alert('Please enter their name!');
+                return;
+            }
+            
+            generateBtn.disabled = true;
+            generateBtn.textContent = '✨ Generating...';
+            
+            // Generate unique link ID
+            const linkId = 'val_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+            
+            // Store data in localStorage (for demo - in production use a database)
+            const valentineData = {
+                recipientName: recipientName,
+                senderName: senderName,
+                customMessage: customMessage,
+                imageData: uploadedImageData,
+                createdAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem(linkId, JSON.stringify(valentineData));
+            
+            // Generate the link
+            const baseUrl = window.location.origin + '/personalized/';
+            const fullLink = baseUrl + '?id=' + linkId;
+            
+            // Update result section
+            document.getElementById('generatedLink').href = fullLink;
+            document.getElementById('generatedLink').textContent = fullLink;
+            
+            // Update share buttons
+            const shareText = `Hey ${recipientName}! 💕 Someone special has a question for you...`;
+            document.getElementById('whatsappShare').href = 
+                `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + fullLink)}`;
+            document.getElementById('smsShare').href = 
+                `sms:?body=${encodeURIComponent(shareText + ' ' + fullLink)}`;
+            document.getElementById('emailShare').href = 
+                `mailto:?subject=A Special Valentine Question 💕&body=${encodeURIComponent(shareText + '\n\n' + fullLink)}`;
+            
+            // Update preview
+            document.getElementById('previewFrame').src = fullLink;
+            
+            // Show result
+            form.style.display = 'none';
+            resultSection.classList.add('show');
+            
+            // Track link generation
+            if (typeof Analytics !== 'undefined') {
+                Analytics.FunnelTracker.linkGenerated(linkId);
+            }
+            
+            // Scroll to result
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Copy link function
+        function copyLink() {
+            const link = document.getElementById('generatedLink').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    btn.textContent = '📋 Copy Link';
+                }, 2000);
+            });
+        }
+        
+        // Initialize
+        initHearts();
+    </script>
+</body>
+</html>

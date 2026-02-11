@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValentineLink - Create Magical Valentine's Moments</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Analytics - REPLACE WITH YOUR TRACKING ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+        
+        // Track page view
+        gtag('event', 'page_view', {
+            'page_title': 'Homepage',
+            'page_location': window.location.href
+        });
+    </script>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-background" id="heartsBackground"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">💕 ValentineLink</div>
+        <div class="nav-links">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#examples">Examples</a>
+            <a href="#buy" class="nav-cta">Create Yours - $10</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Make Them Say YES! 💝</h1>
+            <p class="hero-subtitle">Create a magical, interactive Valentine's experience that will melt their heart. The "No" button runs away - they HAVE to say yes! 😍</p>
+            <div class="hero-buttons">
+                <a href="#buy" class="btn-primary" onclick="trackBuyClick()">Create Your Valentine Link - $10</a>
+                <a href="#examples" class="btn-secondary">See Example</a>
+            </div>
+            <div class="trust-badges">
+                <span>✓ Instant Delivery</span>
+                <span>✓ Customizable</span>
+                <span>✓ Works on All Devices</span>
+            </div>
+        </div>
+        <div class="hero-preview">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="preview-content">
+                        <p class="preview-text">Will you be my Valentine? 💕</p>
+                        <img src="images/hamster.png" alt="Cute character" class="preview-image">
+                        <div class="preview-buttons">
+                            <span class="preview-yes">Yes 💚</span>
+                            <span class="preview-no">No 💔</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-icon">💳</div>
+                <h3>Pay $10</h3>
+                <p>Secure payment via Stripe. No account needed.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-icon">✏️</div>
+                <h3>Customize</h3>
+                <p>Add their name and optionally upload a special photo.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-icon">🔗</div>
+                <h3>Share Link</h3>
+                <p>Send the unique link via text, email, or social media.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-icon">💕</div>
+                <h3>They Say YES!</h3>
+                <p>Watch them smile as they try to click "No" (it runs away!)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Example -->
+    <section id="examples" class="example-section">
+        <h2>See It In Action</h2>
+        <div class="example-container">
+            <div class="example-preview">
+                <iframe src="personalized/example.html" frameborder="0" class="example-iframe"></iframe>
+            </div>
+            <div class="example-features">
+                <h3>What They'll Experience:</h3>
+                <ul>
+                    <li>💕 Beautiful pink gradient with floating hearts</li>
+                    <li>🐹 Adorable animated character</li>
+                    <li>😂 The "No" button moves away when hovered</li>
+                    <li>🎉 Confetti celebration when they click "Yes"</li>
+                    <li>📸 Your optional custom image appears at the end</li>
+                    <li>💌 Personalized with their name</li>
+                </ul>
+                <a href="#buy" class="btn-primary" onclick="trackBuyClick()">Create Yours Now - $10</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Buy Section -->
+    <section id="buy" class="pricing-section">
+        <h2>Create Your Valentine Link</h2>
+        <div class="pricing-card">
+            <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">10</span>
+                <span class="period">CAD</span>
+            </div>
+            <div class="price-features">
+                <div class="feature">✓ Personalized Valentine Page</div>
+                <div class="feature">✓ Custom Recipient Name</div>
+                <div class="feature">✓ Optional Custom Photo</div>
+                <div class="feature">✓ Unique Shareable Link</div>
+                <div class="feature">✓ Works Forever</div>
+                <div class="feature">✓ Mobile & Desktop Friendly</div>
+            </div>
+            
+            <!-- Stripe Payment Button Container -->
+            <div id="payment-container">
+                <!-- STRIPE CHECKOUT BUTTON WILL BE INSERTED HERE -->
+                <!-- See config.js for Stripe integration -->
+                <button id="checkout-button" class="btn-buy" onclick="initiateCheckout()">
+                    💳 Pay $10 & Create Your Link
+                </button>
+            </div>
+            
+            <p class="secure-note">🔒 Secure payment powered by Stripe</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What People Are Saying</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"My girlfriend laughed so hard when the No button kept running away! Best $10 ever spent!"</p>
+                <span class="author">- Mike, Toronto</span>
+            </div>
+            <div class="testimonial">
+                <p>"She said it was the cutest thing anyone's ever done for her. 10/10 would recommend!"</p>
+                <span class="author">- Sarah, Vancouver</span>
+            </div>
+            <div class="testimonial">
+                <p>"Super easy to set up and the reaction was priceless. Thank you!"</p>
+                <span class="author">- David, Montreal</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>How long does it take?</h3>
+                <p>Less than 2 minutes! Pay, customize, and get your link instantly.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do they need to download anything?</h3>
+                <p>Nope! It's a simple link that opens in any web browser.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I add my own photo?</h3>
+                <p>Yes! You can optionally upload a photo that appears when they click "Yes".</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does the link expire?</h3>
+                <p>Never! The link works forever, so they can revisit it anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">💕 ValentineLink</div>
+            <p>Creating magical Valentine's moments, one link at a time.</p>
+            <div class="footer-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#examples">Examples</a>
+                <a href="#buy">Buy Now</a>
+            </div>
+            <p class="copyright">© 2025 ValentineLink. Made with 💕 in Toronto.</p>
+        </div>
+    </footer>
+
+    <!-- Configuration and Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Stripe.js - Loaded from config -->
+    <script id="stripe-script"></script>
+</body>
+</html>

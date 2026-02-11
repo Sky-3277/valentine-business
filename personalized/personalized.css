@@ -1,0 +1,378 @@
+/* ============================================
+   PERSONALIZED VALENTINE PAGE STYLES
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-pink: #ff69b4;
+    --deep-pink: #d81b60;
+    --light-pink: #ffc0cb;
+    --gradient-start: #ffc0cb;
+    --gradient-mid: #ff9eb5;
+    --gradient-end: #ffb6c1;
+    --green: #4caf50;
+    --green-hover: #45a049;
+    --red: #f44336;
+    --white: #ffffff;
+    --text-dark: #880e4f;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 50%, var(--gradient-end) 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Floating Hearts Background */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.5;
+    animation: floatUp 5s ease-in-out infinite;
+    bottom: -50px;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Main Content */
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 25px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+/* Title */
+.valentine-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8rem;
+    color: var(--deep-pink);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    margin: 0;
+    animation: titleBounce 2s ease-in-out infinite;
+    max-width: 90%;
+}
+
+@keyframes titleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Character */
+.character-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cute-character {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    animation: characterBounce 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(216, 27, 96, 0.3));
+}
+
+@keyframes characterBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.02); }
+}
+
+/* Buttons */
+.buttons-container {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    min-height: 80px;
+    padding: 20px;
+}
+
+.yes-button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 18px 50px;
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-hover) 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.yes-button:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 12px 35px rgba(76, 175, 80, 0.5);
+}
+
+.yes-button:active {
+    transform: scale(0.95);
+}
+
+.no-button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, var(--red) 0%, #d32f2f 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: not-allowed;
+    box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.no-button:hover {
+    transform: scale(0.9);
+}
+
+/* Hint Text */
+.hint-text {
+    font-size: 1rem;
+    color: var(--text-dark);
+    opacity: 0.8;
+    animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* From Text */
+.from-text {
+    font-size: 1.1rem;
+    color: var(--deep-pink);
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* Success Content */
+.success-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    animation: successAppear 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes successAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.big-heart {
+    font-size: 7rem;
+    animation: heartBeat 1s ease-in-out infinite;
+    filter: drop-shadow(0 10px 30px rgba(255, 0, 0, 0.4));
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.15); }
+}
+
+.success-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.2rem;
+    color: var(--deep-pink);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+.success-message {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* Custom Image */
+.custom-image-container {
+    margin: 20px 0;
+    animation: fadeIn 1s ease 0.5s both;
+}
+
+.custom-image-container img {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Love Message */
+.love-message {
+    background: linear-gradient(135deg, var(--primary-pink) 0%, #ff1493 100%);
+    padding: 20px 50px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+    animation: lovePulse 1.5s ease-in-out infinite;
+    margin-top: 10px;
+}
+
+@keyframes lovePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6);
+    }
+}
+
+.love-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Create Own Button */
+.create-own-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.create-own-btn:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 12px 35px rgba(156, 39, 176, 0.5);
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    animation: confettiFall 3s ease-out forwards;
+    z-index: 100;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .valentine-title {
+        font-size: 2rem;
+    }
+    
+    .cute-character {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .yes-button {
+        font-size: 1.2rem;
+        padding: 15px 40px;
+    }
+    
+    .no-button {
+        font-size: 0.9rem;
+        padding: 10px 22px;
+    }
+    
+    .success-title {
+        font-size: 1.6rem;
+    }
+    
+    .big-heart {
+        font-size: 5rem;
+    }
+    
+    .love-text {
+        font-size: 1.4rem;
+    }
+    
+    .love-message {
+        padding: 15px 35px;
+    }
+    
+    .custom-image-container img {
+        max-width: 250px;
+        max-height: 250px;
+    }
+}

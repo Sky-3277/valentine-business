@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example - Will You Be My Valentine? 💕</title>
+    <link rel="stylesheet" href="personalized.css">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-background" id="heartsBackground"></div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <h1 class="valentine-title">
+            Sarah, will you be my Valentine? 💕
+        </h1>
+
+        <!-- Cute Character -->
+        <div class="character-container">
+            <img src="../images/hamster.png" alt="Cute hamster holding a heart" class="cute-character">
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons-container">
+            <button class="yes-button" onclick="showExampleSuccess()">
+                Yes 💚
+            </button>
+
+            <button class="no-button" onmouseenter="moveExampleNo()" onclick="moveExampleNo()">
+                No 💔
+            </button>
+        </div>
+
+        <p class="hint-text">Try clicking "No" if you dare! 😏</p>
+        
+        <p class="from-text">From: Your Secret Admirer</p>
+    </div>
+
+    <!-- Success Page (Hidden by default) -->
+    <div class="success-content" id="successContent" style="display: none;">
+        <div class="big-heart">❤️</div>
+        <h1 class="success-title">Yay Sarah! I knew you'd say yes! 🎉</h1>
+        <p class="success-message">You make my heart skip a beat! 💓</p>
+        
+        <!-- Example Custom Image -->
+        <div class="custom-image-container" style="display: block;">
+            <img src="../images/hamster.png" alt="Special memory" style="max-width: 200px; border-radius: 15px;">
+        </div>
+        
+        <div class="love-message">
+            <span class="love-text">I Love You, Sarah! 💕</span>
+        </div>
+        
+        <button class="create-own-btn" onclick="window.parent.location.href='../#buy'">
+            💝 Create Your Own Valentine Link
+        </button>
+    </div>
+
+    <!-- Confetti Container -->
+    <div id="confettiContainer"></div>
+
+    <script>
+        // Initialize floating hearts
+        function initHearts() {
+            const container = document.getElementById('heartsBackground');
+            const hearts = ['💕', '💖', '💗', '💓', '💝', '❤️'];
+            
+            for (let i = 0; i < 12; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Move No button
+        function moveExampleNo() {
+            const noButton = document.querySelector('.no-button');
+            const maxX = window.innerWidth - 150;
+            const maxY = window.innerHeight - 80;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            
+            noButton.style.position = 'fixed';
+            noButton.style.left = newX + 'px';
+            noButton.style.top = newY + 'px';
+            noButton.style.zIndex = '1000';
+        }
+        
+        // Show success
+        function showExampleSuccess() {
+            // Generate confetti
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#ff69b4', '#ff1493', '#ffc0cb', '#ffb6c1', '#ff0000', '#ffffff', '#ffd700'];
+            
+            for (let i = 0; i < 40; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 1 + 's';
+                container.appendChild(confetti);
+            }
+            
+            setTimeout(() => {
+                document.getElementById('mainContent').style.display = 'none';
+                document.getElementById('successContent').style.display = 'flex';
+            }, 600);
+        }
+        
+        initHearts();
+    </script>
+</body>
+</html>

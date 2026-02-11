@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <link rel="stylesheet" href="personalized.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-background" id="heartsBackground"></div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <h1 class="valentine-title" id="valentineTitle">
+            Will you be my Valentine? 💕
+        </h1>
+
+        <!-- Cute Character -->
+        <div class="character-container">
+            <img src="../images/hamster.png" alt="Cute hamster holding a heart" class="cute-character" id="mainImage">
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons-container">
+            <button class="yes-button" id="yesButton" onclick="handleYes()">
+                Yes 💚
+            </button>
+
+            <button class="no-button" id="noButton" onmouseenter="moveNoButton()" onclick="moveNoButton()">
+                No 💔
+            </button>
+        </div>
+
+        <p class="hint-text">Try clicking "No" if you dare! 😏</p>
+        
+        <p class="from-text" id="fromText"></p>
+    </div>
+
+    <!-- Success Page -->
+    <div class="success-content" id="successContent" style="display: none;">
+        <div class="big-heart">❤️</div>
+        <h1 class="success-title" id="successTitle">Yay! I knew you'd say yes! 🎉</h1>
+        <p class="success-message" id="successMessage">You make my heart skip a beat! 💓</p>
+        
+        <!-- Custom Image (if uploaded) -->
+        <div class="custom-image-container" id="customImageContainer" style="display: none;">
+            <img id="customImage" alt="Special memory">
+        </div>
+        
+        <div class="love-message">
+            <span class="love-text" id="loveText">I Love You! 💕</span>
+        </div>
+        
+        <button class="create-own-btn" onclick="window.location.href='../'">
+            💝 Create Your Own Valentine Link
+        </button>
+    </div>
+
+    <!-- Confetti Container -->
+    <div id="confettiContainer"></div>
+
+    <script src="personalized.js"></script>
+</body>
+</html>
